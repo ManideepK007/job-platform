@@ -3,9 +3,10 @@ from datetime import datetime
 
 class Company(db.Model):
     __tablename__ = "companies"
+
     jobs = db.relationship("Job", backref="company", lazy=True)
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     industry = db.Column(db.String(100))
     location = db.Column(db.String(100))
     website = db.Column(db.String(200))
