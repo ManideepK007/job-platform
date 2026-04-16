@@ -4,6 +4,18 @@ from app.models.company import Company
 
 job_bp = Blueprint("jobs", __name__)
 
+@job_bp.route("/", methods=["GET"])
+def index():
+    return jsonify({
+        "message": "Welcome to the Job Platform API",
+        "status": "Success",
+        "available_endpoints": [
+            "/jobs",
+            "/jobs/filter",
+            "/companies",
+            "/skills"
+        ]
+    }), 200
 @job_bp.route("/jobs", methods=["GET"])
 def get_jobs():
     jobs = Job.query.all()
